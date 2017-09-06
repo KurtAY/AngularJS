@@ -1,0 +1,14 @@
+<div class="dashboard panel panel-default" ng-controller="searchController as searchCtrl">
+    <div class="panel-heading">PokeSearch</div>
+    <div class="panel-body">
+        <form id="pokeForm" action="#pokeDetails-page" method="post">
+        <p>Enter Pokemon you want: <input type="text" ng-model="pokeName" placeholder="Name/Number">
+        </p>
+            <div>
+                <input type="button" ng-click="searchCtrl.getPokemon(pokeNo);" value="Search">
+            </div>
+        </form>
+    </div>
+
+
+</div>
