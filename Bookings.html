@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+                
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+                
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+            <table>
+            <tr>
+                <th>Ticket</th>
+                <th>Price</th> 
+                <th>Quantity</th>
+            </tr>
+            <tr>
+                <td>Adult</td>
+                <td>£{{adultPrice}}.00</td> 
+                <td><input type="button" ng-click="add()" value="+" ng-init="1">
+                    <input type="button" ng-click="subtract()" value="-">
+                    {{count}}
+                </td>
+            </tr>
+            <tr>
+                <td>Teen</td>
+                <td>£{{teenPrice}}.00</td> 
+                <td><input type="button" ng-click="add1()" value="+" ng-init="1">
+                    <input type="button" ng-click="subtract1()" value="-">
+                    {{count1}}
+                </td>
+            </tr>
+            <tr>
+                <td>Student</td>
+                <td>£{{studentPrice}}.00</td> 
+                <td><input type="button" ng-click="add2()" value="+" ng-init="1">
+                    <input type="button" ng-click="subtract2()" value="-">
+                    {{count2}}
+                </td>
+            </tr>
+            <tr>
+                <td>Child - under 12</td>
+                <td>£{{childPrice}}.00</td> 
+                <td><input type="button" ng-click="add3()" value="+" ng-init="1">
+                    <input type="button" ng-click="subtract3()" value="-">
+                    {{count3}}
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Order Total: </td> 
+                <td>£{{(count*adultPrice)+(count1*teenPrice)+(count2*studentPrice)+(count3*childPrice)}}.00</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let app = angular.module("myApp",[]);
+        app.controller('myCtrl', function($scope) {
+            $scope.count = 0;
+            $scope.count1 = 0;
+            $scope.count2 = 0;
+            $scope.count3 = 0;
+
+            let max = 20;
+            $scope.adultPrice= 7.00;
+            $scope.teenPrice= 6.00;
+            $scope.studentPrice= 5.00;
+            $scope.childPrice= 4.00;
+
+            $scope.add = function() {
+                if ($scope.count >= max) ;
+            $scope.count++;
+            };
+            $scope.subtract = function() {
+                $scope.count--;
+                if($scope.count<0){
+                    $scope.count=0;
+                }
+            };
+            
+            $scope.add1 = function() {
+                if ($scope.count1 >= max) ;
+            $scope.count1++;
+            };
+            $scope.subtract1 = function() {
+                $scope.count1--;
+                if($scope.count1<0){
+                    $scope.count1=0;
+                }
+            };
+
+            $scope.add2 = function() {
+                if ($scope.count2 >= max) ;
+            $scope.count2++;
+            };
+            $scope.subtract2 = function() {
+                $scope.count2--;
+                if($scope.count2<0){
+                    $scope.count2=0;
+                }
+            };
+
+            $scope.add3 = function() {
+                if ($scope.count3 >= max) ;
+            $scope.count3++;
+            };
+            $scope.subtract3 = function() {
+                $scope.count3--;
+                if($scope.count3<0){
+                    $scope.count3=0;
+                }
+            };
+        })
+    </script>
+    </body>    
+</html>
